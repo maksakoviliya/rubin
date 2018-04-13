@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Start HTML template</title>
+    <meta name="description" content="Description of the project">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <meta property="og:image" content="path/to/image.jpg">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+    <!-- Chrome, Firefox OS and Opera-->
+    <meta name="theme-color" content="#000">
+    <!-- Windows Phone-->
+    <meta name="msapplication-navbutton-color" content="#000">
+    <!-- iOS Safari-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-top">
+          <div class="menu-burger visible-xs"><a href="#" data-target="main-menu" class="menu-burger_btn"><span></span><span></span><span></span></a></div>
+          <div class="logo"><a href="/">
+              <picture><img src="img/logo.png" alt="logo" title="logo" class="img-responsive">
+              </picture></a></div>
+          <div class="header-menu-contacts hidden-xs"></div><a href="#" class="button enroll"><i class="fa fa-phone visible-xs visible-sm"></i><span class="visible-md visible-lg">Записаться</span></a>
+        </div>
+        <div class="navbar hidden-xs"></div>
+      </div>
+      <div id="main-menu" class="menu"><a href="#loginForm" class="login"><i class="fa fa-user"></i><span class="visible-xs visible-md visible-lg">Личный кабинет </span></a>
+        <div class="menu-list"><a href="#" class="menu-list_link">О компании</a><a href="/team.html" class="menu-list_link">Специалисты</a><a href="#" class="menu-list_link">Направления</a><a href="#" class="menu-list_link">Фотогалерея</a><a href="#" class="menu-list_link">Вопросы и ответы</a><a href="#" class="menu-list_link">Отзывы</a><a href="#" class="menu-list_link">Новости и акции</a><a href="#" class="menu-list_link">Вакансии</a><a href="#" class="menu-list_link">Контакты</a></div>
+        <div class="menu-contacts">
+          <div class="menu-contacts_item"><span class="menu-contacts_icon"><i class="fa fa-map-marker"></i></span>
+            <h3 class="h3">г. Каменск-Уральский<br>ул. Каменская, 25</h3><a href="#" class="menu-contacts_link">Показать на карте	</a>
+          </div>
+          <div class="menu-contacts_item"><span class="menu-contacts_icon"><i class="fa fa-phone"></i></span>
+            <h3 class="h3">+7 (3439) 399-880 </h3><a href="#backCallForm" class="menu-contacts_link">Перезвоните мне</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="banner" class="section">
+      <div class="banner-slider">
+        <div data-xs="img/banner_small.jpg" data-lg="img/banner_large.jpg" class="banner-slider_item">
+          <div class="container">
+            <h2 class="h1 banner-slider_title">Современное диагностическое оборудование</h2>
+            <h2 class="h2 banner-slider_subtitle">Самое передовое оборудование в г. Каменск-Уральский</h2><a href="#" class="button banner-slider_button">Узнать подробнее</a>
+          </div>
+        </div>
+        <div data-xs="img/banner_small.jpg" data-lg="img/banner_large.jpg" class="banner-slider_item">
+          <div class="container">
+            <h2 class="h1 banner-slider_title">Современное диагностическое оборудование</h2>
+            <h2 class="h2 banner-slider_subtitle">Самое передовое оборудование в г. Каменск-Уральский</h2><a href="#" class="button banner-slider_button">Узнать подробнее</a>
+          </div>
+        </div>
+        <div data-xs="img/banner_small.jpg" data-lg="img/banner_large.jpg" class="banner-slider_item">
+          <div class="container">
+            <h2 class="h1 banner-slider_title">Современное диагностическое оборудование</h2>
+            <h2 class="h2 banner-slider_subtitle">Самое передовое оборудование в г. Каменск-Уральский</h2><a href="#" class="button banner-slider_button">Узнать подробнее</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="activities" class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2 class="h2 section-title">Наши направления</h2>
+          </div>
+        </div>
+        <div id="search">
+          <div class="row">
+            <div class="col-xs-12">
+              <form action="#" class="form search-form">
+                <input type="text" v-model="search">
+                <button type="submit"><i class="fa fa-search"></i><span class="hidden-xs">Найти</span></button>
+                <div v-if="search" class="search-form_content">
+                  <p v-if="!filteredWorks.length &amp;&amp; !filteredDoctors.length &amp;&amp; !filteredActivities.length &amp;&amp; !filteredServices.length">Ничего не найдено</p>
+                  <div v-if="filteredWorks.length" class="search-form_item">
+                    <p class="search-form_title">Специальности</p><a v-for="work in filteredWorks" href="#" class="search-form_result">{{ work }}</a>
+                  </div>
+                  <div v-if="filteredDoctors.length" class="search-form_item">
+                    <p class="search-form_title">Специалисты</p><a v-for="doctor in filteredDoctors" href="#" class="search-form_result">{{ doctor }}</a>
+                  </div>
+                  <div v-if="filteredActivities.length" class="search-form_item">
+                    <p class="search-form_title">Направления</p><a v-for="activity in filteredActivities" href="#" class="search-form_result">{{ activity }}</a>
+                  </div>
+                  <div v-if="filteredServices.length" class="search-form_item">
+                    <p class="search-form_title">Услуги</p><a v-for="service in filteredServices" href="#" class="search-form_result">{{ service }}</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="activities-item">
+              <svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M435.238,392.533c-30.26,0-55.319,22.623-59.196,51.84c-50.425,3.865-87.746-6.125-110.931-29.8								c-24.227-24.733-26.75-58.598-26.575-73.35c54.802-1.11,104.65-13.436,141.071-35.042c41.977-24.9,64.164-59.958,64.164-101.383								c0-2.902,0.019-5.946,0.035-9.106c0.24-40.7,0.598-102.208-35.996-132.919c-12.902-10.823-30.742-20.019-53.067-27.388								C346.578,26.973,318.813,0,298.705,0c-23.527,0-42.667,19.14-42.667,42.667s19.14,42.667,42.667,42.667								c18.371,0,43.117-22.502,53.488-32.806c18.927,6.496,33.923,14.321,44.648,23.321c30.452,25.554,30.121,82.236,29.902,119.744								c-0.019,3.196-0.038,6.273-0.038,9.206c0,70.339-80.708,119.467-196.267,119.467c-115.558,0-196.267-49.127-196.267-119.467								c0-2.933-0.019-6.01-0.037-9.206c-0.219-37.508-0.55-94.189,29.902-119.744c10.721-8.996,25.715-16.825,44.644-23.325								c10.369,10.304,35.119,32.81,53.492,32.81c23.527,0,42.667-19.14,42.667-42.667S185.699,0,162.171,0								c-20.106,0-47.865,26.965-56.035,35.381C83.807,42.752,65.965,51.95,53.065,62.773c-36.594,30.71-36.236,92.219-35.996,132.919								c0.017,3.16,0.035,6.204,0.035,9.106c0,41.425,22.188,76.483,64.165,101.383c36.219,21.485,85.712,33.8,140.154,35.029								c-0.256,17.567,2.844,55.94,31.356,85.165c23.294,23.875,57.858,35.904,102.996,35.904c6.585,0,13.408-0.269,20.444-0.781								C380.672,490.067,405.44,512,435.238,512c32.938,0,59.733-26.796,59.733-59.733C494.972,419.329,468.176,392.533,435.238,392.533z								M298.705,68.267c-14.117,0-25.6-11.483-25.6-25.6s11.483-25.6,25.6-25.6c8.731,0,25.642,12.86,38.202,24.717								c0.027,0.531,0.104,1.052,0.227,1.565C324.561,55.258,307.511,68.267,298.705,68.267z M162.171,17.067								c14.117,0,25.6,11.483,25.6,25.6s-11.483,25.6-25.6,25.6c-8.95,0-26.504-13.513-39.148-25.604								C135.655,30.575,153.199,17.067,162.171,17.067z M435.238,494.933c-23.527,0-42.667-19.14-42.667-42.667								c0-23.527,19.14-42.667,42.667-42.667c23.527,0,42.667,19.14,42.667,42.667C477.905,475.794,458.765,494.933,435.238,494.933z"></path>
+                  </g>
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+              <h3 class="h3 activities-item_title">Взрослое<br>отделение</h3>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="activities-item">
+              <svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M435.238,392.533c-30.26,0-55.319,22.623-59.196,51.84c-50.425,3.865-87.746-6.125-110.931-29.8								c-24.227-24.733-26.75-58.598-26.575-73.35c54.802-1.11,104.65-13.436,141.071-35.042c41.977-24.9,64.164-59.958,64.164-101.383								c0-2.902,0.019-5.946,0.035-9.106c0.24-40.7,0.598-102.208-35.996-132.919c-12.902-10.823-30.742-20.019-53.067-27.388								C346.578,26.973,318.813,0,298.705,0c-23.527,0-42.667,19.14-42.667,42.667s19.14,42.667,42.667,42.667								c18.371,0,43.117-22.502,53.488-32.806c18.927,6.496,33.923,14.321,44.648,23.321c30.452,25.554,30.121,82.236,29.902,119.744								c-0.019,3.196-0.038,6.273-0.038,9.206c0,70.339-80.708,119.467-196.267,119.467c-115.558,0-196.267-49.127-196.267-119.467								c0-2.933-0.019-6.01-0.037-9.206c-0.219-37.508-0.55-94.189,29.902-119.744c10.721-8.996,25.715-16.825,44.644-23.325								c10.369,10.304,35.119,32.81,53.492,32.81c23.527,0,42.667-19.14,42.667-42.667S185.699,0,162.171,0								c-20.106,0-47.865,26.965-56.035,35.381C83.807,42.752,65.965,51.95,53.065,62.773c-36.594,30.71-36.236,92.219-35.996,132.919								c0.017,3.16,0.035,6.204,0.035,9.106c0,41.425,22.188,76.483,64.165,101.383c36.219,21.485,85.712,33.8,140.154,35.029								c-0.256,17.567,2.844,55.94,31.356,85.165c23.294,23.875,57.858,35.904,102.996,35.904c6.585,0,13.408-0.269,20.444-0.781								C380.672,490.067,405.44,512,435.238,512c32.938,0,59.733-26.796,59.733-59.733C494.972,419.329,468.176,392.533,435.238,392.533z								M298.705,68.267c-14.117,0-25.6-11.483-25.6-25.6s11.483-25.6,25.6-25.6c8.731,0,25.642,12.86,38.202,24.717								c0.027,0.531,0.104,1.052,0.227,1.565C324.561,55.258,307.511,68.267,298.705,68.267z M162.171,17.067								c14.117,0,25.6,11.483,25.6,25.6s-11.483,25.6-25.6,25.6c-8.95,0-26.504-13.513-39.148-25.604								C135.655,30.575,153.199,17.067,162.171,17.067z M435.238,494.933c-23.527,0-42.667-19.14-42.667-42.667								c0-23.527,19.14-42.667,42.667-42.667c23.527,0,42.667,19.14,42.667,42.667C477.905,475.794,458.765,494.933,435.238,494.933z"></path>
+                  </g>
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+              <h3 class="h3 activities-item_title">Взрослое<br>отделение</h3>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="activities-item">
+              <svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M435.238,392.533c-30.26,0-55.319,22.623-59.196,51.84c-50.425,3.865-87.746-6.125-110.931-29.8								c-24.227-24.733-26.75-58.598-26.575-73.35c54.802-1.11,104.65-13.436,141.071-35.042c41.977-24.9,64.164-59.958,64.164-101.383								c0-2.902,0.019-5.946,0.035-9.106c0.24-40.7,0.598-102.208-35.996-132.919c-12.902-10.823-30.742-20.019-53.067-27.388								C346.578,26.973,318.813,0,298.705,0c-23.527,0-42.667,19.14-42.667,42.667s19.14,42.667,42.667,42.667								c18.371,0,43.117-22.502,53.488-32.806c18.927,6.496,33.923,14.321,44.648,23.321c30.452,25.554,30.121,82.236,29.902,119.744								c-0.019,3.196-0.038,6.273-0.038,9.206c0,70.339-80.708,119.467-196.267,119.467c-115.558,0-196.267-49.127-196.267-119.467								c0-2.933-0.019-6.01-0.037-9.206c-0.219-37.508-0.55-94.189,29.902-119.744c10.721-8.996,25.715-16.825,44.644-23.325								c10.369,10.304,35.119,32.81,53.492,32.81c23.527,0,42.667-19.14,42.667-42.667S185.699,0,162.171,0								c-20.106,0-47.865,26.965-56.035,35.381C83.807,42.752,65.965,51.95,53.065,62.773c-36.594,30.71-36.236,92.219-35.996,132.919								c0.017,3.16,0.035,6.204,0.035,9.106c0,41.425,22.188,76.483,64.165,101.383c36.219,21.485,85.712,33.8,140.154,35.029								c-0.256,17.567,2.844,55.94,31.356,85.165c23.294,23.875,57.858,35.904,102.996,35.904c6.585,0,13.408-0.269,20.444-0.781								C380.672,490.067,405.44,512,435.238,512c32.938,0,59.733-26.796,59.733-59.733C494.972,419.329,468.176,392.533,435.238,392.533z								M298.705,68.267c-14.117,0-25.6-11.483-25.6-25.6s11.483-25.6,25.6-25.6c8.731,0,25.642,12.86,38.202,24.717								c0.027,0.531,0.104,1.052,0.227,1.565C324.561,55.258,307.511,68.267,298.705,68.267z M162.171,17.067								c14.117,0,25.6,11.483,25.6,25.6s-11.483,25.6-25.6,25.6c-8.95,0-26.504-13.513-39.148-25.604								C135.655,30.575,153.199,17.067,162.171,17.067z M435.238,494.933c-23.527,0-42.667-19.14-42.667-42.667								c0-23.527,19.14-42.667,42.667-42.667c23.527,0,42.667,19.14,42.667,42.667C477.905,475.794,458.765,494.933,435.238,494.933z"></path>
+                  </g>
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+              <h3 class="h3 activities-item_title">Взрослое<br>отделение</h3>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="activities-item">
+              <svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M435.238,392.533c-30.26,0-55.319,22.623-59.196,51.84c-50.425,3.865-87.746-6.125-110.931-29.8								c-24.227-24.733-26.75-58.598-26.575-73.35c54.802-1.11,104.65-13.436,141.071-35.042c41.977-24.9,64.164-59.958,64.164-101.383								c0-2.902,0.019-5.946,0.035-9.106c0.24-40.7,0.598-102.208-35.996-132.919c-12.902-10.823-30.742-20.019-53.067-27.388								C346.578,26.973,318.813,0,298.705,0c-23.527,0-42.667,19.14-42.667,42.667s19.14,42.667,42.667,42.667								c18.371,0,43.117-22.502,53.488-32.806c18.927,6.496,33.923,14.321,44.648,23.321c30.452,25.554,30.121,82.236,29.902,119.744								c-0.019,3.196-0.038,6.273-0.038,9.206c0,70.339-80.708,119.467-196.267,119.467c-115.558,0-196.267-49.127-196.267-119.467								c0-2.933-0.019-6.01-0.037-9.206c-0.219-37.508-0.55-94.189,29.902-119.744c10.721-8.996,25.715-16.825,44.644-23.325								c10.369,10.304,35.119,32.81,53.492,32.81c23.527,0,42.667-19.14,42.667-42.667S185.699,0,162.171,0								c-20.106,0-47.865,26.965-56.035,35.381C83.807,42.752,65.965,51.95,53.065,62.773c-36.594,30.71-36.236,92.219-35.996,132.919								c0.017,3.16,0.035,6.204,0.035,9.106c0,41.425,22.188,76.483,64.165,101.383c36.219,21.485,85.712,33.8,140.154,35.029								c-0.256,17.567,2.844,55.94,31.356,85.165c23.294,23.875,57.858,35.904,102.996,35.904c6.585,0,13.408-0.269,20.444-0.781								C380.672,490.067,405.44,512,435.238,512c32.938,0,59.733-26.796,59.733-59.733C494.972,419.329,468.176,392.533,435.238,392.533z								M298.705,68.267c-14.117,0-25.6-11.483-25.6-25.6s11.483-25.6,25.6-25.6c8.731,0,25.642,12.86,38.202,24.717								c0.027,0.531,0.104,1.052,0.227,1.565C324.561,55.258,307.511,68.267,298.705,68.267z M162.171,17.067								c14.117,0,25.6,11.483,25.6,25.6s-11.483,25.6-25.6,25.6c-8.95,0-26.504-13.513-39.148-25.604								C135.655,30.575,153.199,17.067,162.171,17.067z M435.238,494.933c-23.527,0-42.667-19.14-42.667-42.667								c0-23.527,19.14-42.667,42.667-42.667c23.527,0,42.667,19.14,42.667,42.667C477.905,475.794,458.765,494.933,435.238,494.933z"></path>
+                  </g>
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+              <h3 class="h3 activities-item_title">Взрослое<br>отделение</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="activities-item">
+              <svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M435.238,392.533c-30.26,0-55.319,22.623-59.196,51.84c-50.425,3.865-87.746-6.125-110.931-29.8								c-24.227-24.733-26.75-58.598-26.575-73.35c54.802-1.11,104.65-13.436,141.071-35.042c41.977-24.9,64.164-59.958,64.164-101.383								c0-2.902,0.019-5.946,0.035-9.106c0.24-40.7,0.598-102.208-35.996-132.919c-12.902-10.823-30.742-20.019-53.067-27.388								C346.578,26.973,318.813,0,298.705,0c-23.527,0-42.667,19.14-42.667,42.667s19.14,42.667,42.667,42.667								c18.371,0,43.117-22.502,53.488-32.806c18.927,6.496,33.923,14.321,44.648,23.321c30.452,25.554,30.121,82.236,29.902,119.744								c-0.019,3.196-0.038,6.273-0.038,9.206c0,70.339-80.708,119.467-196.267,119.467c-115.558,0-196.267-49.127-196.267-119.467								c0-2.933-0.019-6.01-0.037-9.206c-0.219-37.508-0.55-94.189,29.902-119.744c10.721-8.996,25.715-16.825,44.644-23.325								c10.369,10.304,35.119,32.81,53.492,32.81c23.527,0,42.667-19.14,42.667-42.667S185.699,0,162.171,0								c-20.106,0-47.865,26.965-56.035,35.381C83.807,42.752,65.965,51.95,53.065,62.773c-36.594,30.71-36.236,92.219-35.996,132.919								c0.017,3.16,0.035,6.204,0.035,9.106c0,41.425,22.188,76.483,64.165,101.383c36.219,21.485,85.712,33.8,140.154,35.029								c-0.256,17.567,2.844,55.94,31.356,85.165c23.294,23.875,57.858,35.904,102.996,35.904c6.585,0,13.408-0.269,20.444-0.781								C380.672,490.067,405.44,512,435.238,512c32.938,0,59.733-26.796,59.733-59.733C494.972,419.329,468.176,392.533,435.238,392.533z								M298.705,68.267c-14.117,0-25.6-11.483-25.6-25.6s11.483-25.6,25.6-25.6c8.731,0,25.642,12.86,38.202,24.717								c0.027,0.531,0.104,1.052,0.227,1.565C324.561,55.258,307.511,68.267,298.705,68.267z M162.171,17.067								c14.117,0,25.6,11.483,25.6,25.6s-11.483,25.6-25.6,25.6c-8.95,0-26.504-13.513-39.148-25.604								C135.655,30.575,153.199,17.067,162.171,17.067z M435.238,494.933c-23.527,0-42.667-19.14-42.667-42.667								c0-23.527,19.14-42.667,42.667-42.667c23.527,0,42.667,19.14,42.667,42.667C477.905,475.794,458.765,494.933,435.238,494.933z"></path>
+                  </g>
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+              <h3 class="h3 activities-item_title">Взрослое<br>отделение</h3>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="activities-item">
+              <svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M435.238,392.533c-30.26,0-55.319,22.623-59.196,51.84c-50.425,3.865-87.746-6.125-110.931-29.8								c-24.227-24.733-26.75-58.598-26.575-73.35c54.802-1.11,104.65-13.436,141.071-35.042c41.977-24.9,64.164-59.958,64.164-101.383								c0-2.902,0.019-5.946,0.035-9.106c0.24-40.7,0.598-102.208-35.996-132.919c-12.902-10.823-30.742-20.019-53.067-27.388								C346.578,26.973,318.813,0,298.705,0c-23.527,0-42.667,19.14-42.667,42.667s19.14,42.667,42.667,42.667								c18.371,0,43.117-22.502,53.488-32.806c18.927,6.496,33.923,14.321,44.648,23.321c30.452,25.554,30.121,82.236,29.902,119.744								c-0.019,3.196-0.038,6.273-0.038,9.206c0,70.339-80.708,119.467-196.267,119.467c-115.558,0-196.267-49.127-196.267-119.467								c0-2.933-0.019-6.01-0.037-9.206c-0.219-37.508-0.55-94.189,29.902-119.744c10.721-8.996,25.715-16.825,44.644-23.325								c10.369,10.304,35.119,32.81,53.492,32.81c23.527,0,42.667-19.14,42.667-42.667S185.699,0,162.171,0								c-20.106,0-47.865,26.965-56.035,35.381C83.807,42.752,65.965,51.95,53.065,62.773c-36.594,30.71-36.236,92.219-35.996,132.919								c0.017,3.16,0.035,6.204,0.035,9.106c0,41.425,22.188,76.483,64.165,101.383c36.219,21.485,85.712,33.8,140.154,35.029								c-0.256,17.567,2.844,55.94,31.356,85.165c23.294,23.875,57.858,35.904,102.996,35.904c6.585,0,13.408-0.269,20.444-0.781								C380.672,490.067,405.44,512,435.238,512c32.938,0,59.733-26.796,59.733-59.733C494.972,419.329,468.176,392.533,435.238,392.533z								M298.705,68.267c-14.117,0-25.6-11.483-25.6-25.6s11.483-25.6,25.6-25.6c8.731,0,25.642,12.86,38.202,24.717								c0.027,0.531,0.104,1.052,0.227,1.565C324.561,55.258,307.511,68.267,298.705,68.267z M162.171,17.067								c14.117,0,25.6,11.483,25.6,25.6s-11.483,25.6-25.6,25.6c-8.95,0-26.504-13.513-39.148-25.604								C135.655,30.575,153.199,17.067,162.171,17.067z M435.238,494.933c-23.527,0-42.667-19.14-42.667-42.667								c0-23.527,19.14-42.667,42.667-42.667c23.527,0,42.667,19.14,42.667,42.667C477.905,475.794,458.765,494.933,435.238,494.933z"></path>
+                  </g>
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+              <h3 class="h3 activities-item_title">Взрослое<br>отделение</h3>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="activities-item">
+              <svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M435.238,392.533c-30.26,0-55.319,22.623-59.196,51.84c-50.425,3.865-87.746-6.125-110.931-29.8								c-24.227-24.733-26.75-58.598-26.575-73.35c54.802-1.11,104.65-13.436,141.071-35.042c41.977-24.9,64.164-59.958,64.164-101.383								c0-2.902,0.019-5.946,0.035-9.106c0.24-40.7,0.598-102.208-35.996-132.919c-12.902-10.823-30.742-20.019-53.067-27.388								C346.578,26.973,318.813,0,298.705,0c-23.527,0-42.667,19.14-42.667,42.667s19.14,42.667,42.667,42.667								c18.371,0,43.117-22.502,53.488-32.806c18.927,6.496,33.923,14.321,44.648,23.321c30.452,25.554,30.121,82.236,29.902,119.744								c-0.019,3.196-0.038,6.273-0.038,9.206c0,70.339-80.708,119.467-196.267,119.467c-115.558,0-196.267-49.127-196.267-119.467								c0-2.933-0.019-6.01-0.037-9.206c-0.219-37.508-0.55-94.189,29.902-119.744c10.721-8.996,25.715-16.825,44.644-23.325								c10.369,10.304,35.119,32.81,53.492,32.81c23.527,0,42.667-19.14,42.667-42.667S185.699,0,162.171,0								c-20.106,0-47.865,26.965-56.035,35.381C83.807,42.752,65.965,51.95,53.065,62.773c-36.594,30.71-36.236,92.219-35.996,132.919								c0.017,3.16,0.035,6.204,0.035,9.106c0,41.425,22.188,76.483,64.165,101.383c36.219,21.485,85.712,33.8,140.154,35.029								c-0.256,17.567,2.844,55.94,31.356,85.165c23.294,23.875,57.858,35.904,102.996,35.904c6.585,0,13.408-0.269,20.444-0.781								C380.672,490.067,405.44,512,435.238,512c32.938,0,59.733-26.796,59.733-59.733C494.972,419.329,468.176,392.533,435.238,392.533z								M298.705,68.267c-14.117,0-25.6-11.483-25.6-25.6s11.483-25.6,25.6-25.6c8.731,0,25.642,12.86,38.202,24.717								c0.027,0.531,0.104,1.052,0.227,1.565C324.561,55.258,307.511,68.267,298.705,68.267z M162.171,17.067								c14.117,0,25.6,11.483,25.6,25.6s-11.483,25.6-25.6,25.6c-8.95,0-26.504-13.513-39.148-25.604								C135.655,30.575,153.199,17.067,162.171,17.067z M435.238,494.933c-23.527,0-42.667-19.14-42.667-42.667								c0-23.527,19.14-42.667,42.667-42.667c23.527,0,42.667,19.14,42.667,42.667C477.905,475.794,458.765,494.933,435.238,494.933z"></path>
+                  </g>
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+              <h3 class="h3 activities-item_title">Взрослое<br>отделение</h3>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="activities-item">
+              <svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M435.238,392.533c-30.26,0-55.319,22.623-59.196,51.84c-50.425,3.865-87.746-6.125-110.931-29.8								c-24.227-24.733-26.75-58.598-26.575-73.35c54.802-1.11,104.65-13.436,141.071-35.042c41.977-24.9,64.164-59.958,64.164-101.383								c0-2.902,0.019-5.946,0.035-9.106c0.24-40.7,0.598-102.208-35.996-132.919c-12.902-10.823-30.742-20.019-53.067-27.388								C346.578,26.973,318.813,0,298.705,0c-23.527,0-42.667,19.14-42.667,42.667s19.14,42.667,42.667,42.667								c18.371,0,43.117-22.502,53.488-32.806c18.927,6.496,33.923,14.321,44.648,23.321c30.452,25.554,30.121,82.236,29.902,119.744								c-0.019,3.196-0.038,6.273-0.038,9.206c0,70.339-80.708,119.467-196.267,119.467c-115.558,0-196.267-49.127-196.267-119.467								c0-2.933-0.019-6.01-0.037-9.206c-0.219-37.508-0.55-94.189,29.902-119.744c10.721-8.996,25.715-16.825,44.644-23.325								c10.369,10.304,35.119,32.81,53.492,32.81c23.527,0,42.667-19.14,42.667-42.667S185.699,0,162.171,0								c-20.106,0-47.865,26.965-56.035,35.381C83.807,42.752,65.965,51.95,53.065,62.773c-36.594,30.71-36.236,92.219-35.996,132.919								c0.017,3.16,0.035,6.204,0.035,9.106c0,41.425,22.188,76.483,64.165,101.383c36.219,21.485,85.712,33.8,140.154,35.029								c-0.256,17.567,2.844,55.94,31.356,85.165c23.294,23.875,57.858,35.904,102.996,35.904c6.585,0,13.408-0.269,20.444-0.781								C380.672,490.067,405.44,512,435.238,512c32.938,0,59.733-26.796,59.733-59.733C494.972,419.329,468.176,392.533,435.238,392.533z								M298.705,68.267c-14.117,0-25.6-11.483-25.6-25.6s11.483-25.6,25.6-25.6c8.731,0,25.642,12.86,38.202,24.717								c0.027,0.531,0.104,1.052,0.227,1.565C324.561,55.258,307.511,68.267,298.705,68.267z M162.171,17.067								c14.117,0,25.6,11.483,25.6,25.6s-11.483,25.6-25.6,25.6c-8.95,0-26.504-13.513-39.148-25.604								C135.655,30.575,153.199,17.067,162.171,17.067z M435.238,494.933c-23.527,0-42.667-19.14-42.667-42.667								c0-23.527,19.14-42.667,42.667-42.667c23.527,0,42.667,19.14,42.667,42.667C477.905,475.794,458.765,494.933,435.238,494.933z"></path>
+                  </g>
+                </g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+              <h3 class="h3 activities-item_title">Взрослое<br>отделение</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="entry" class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-5">
+            <h2 class="section-title">Популярные специалисты</h2>
+            <div class="specialists-list"><a href="#" class="specialists-list_item">Гемостазиолог</a><a href="#" class="specialists-list_item">Гинеколог</a><a href="#" class="specialists-list_item">Терапевт</a><a href="#" class="specialists-list_item">Кардиолог</a><a href="#" class="specialists-list_item">Уролог</a><a href="#" class="specialists-list_item specialists-list_all">
+                 
+                Смотреть всех специалистов<span class="visible-md visible-lg"><i class="fa fa-angle-right"></i></span></a></div>
+          </div>
+          <div class="col-xs-12 col-md-7">
+            <h2 class="section-title">Online-запись</h2>
+            <form action="#" data-background="img/entry-form-bg.png" class="entry-form">
+              <p class="entry-form_text">Оставьте ваши контактные данные и администратор клиники позвонит в ближайшее время и запишет вас на прием к специалисту</p>
+              <div class="field entry-form_field">
+                <label for="entry_name" class="label">Представьтесь</label>
+                <input type="text" id="entry_name" placeholder="Ваше ФИО" class="input">
+              </div>
+              <div class="field entry-form_field">
+                <label for="entry_phone" class="label">Ваш телефон</label>
+                <input type="text" id="entry_phone" placeholder="+7 (___) ___ __ __" class="input">
+              </div>
+              <div id="specialist_search" class="field entry-form_field">
+                <label for="entry_specialist" class="label">Выберите нужного специалиста</label>
+                <input type="text" id="entry_specialist" placeholder="Введите или выберите из списка" v-model="search" class="input">
+                <div v-if="search" class="search-form_content">
+                  <p v-if="!filteredWorks.length" class="nothing">Ничего не найдено</p>
+                  <div v-if="filteredWorks.length" class="search-form_item"><a v-for="work in filteredWorks" href="#" @click.prevent="search = work" class="search-form_result">{{ work }}</a></div>
+                </div>
+              </div>
+              <div class="field entry-form_field">
+                <label for="entry_date" class="label">Выберите дату запси</label>
+                <input type="text" id="entry_date" data-position="bottom left" placeholder="__/__/__" class="input datepicker-here">
+              </div>
+              <div class="entry-form_checkbox">
+                <label class="checkbox">
+                  <input type="checkbox" id="entry_agreement">
+                  <label for="entry_agreement">Я согласен с <a href="#">политикой обработки персональных данных</a></label>
+                </label>
+              </div>
+              <button type="submit" class="entry-form_submit">Отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="hero" class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div style="background-image:url(img/hero.png)" class="hero-content">
+              <h2 class="h2 hero-content_title">Поможем принять решение</h2>
+              <p class="hero-content_text">Оставьте заявку и наш администратор бесплатно проконсультирует Вас и запишет к нужному специалисту</p><a href="#" class="button hero-content_button">Отправить заявку</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="news" class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2 class="section-title">Новости и акции</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="main_news-item">
+              <p class="main_news-item_date">30 октября 2017 г.</p>
+              <h3 class="h3 main_news-item_title"><a href="#">Конкурс "Лечение как приключение"</a></h3>
+              <p class="main_news-item_text">Если вспоминать, каких докторов мы знаем, нефролога называют не сразу – стучишься к нему не каждый день и даже не каждый год.</p>
+            </div>
+          </div>
+          <div class="col-xs-12 hidden-xs col-sm-6 col-md-4 col-lg-3">
+            <div class="main_news-item">
+              <p class="main_news-item_date">30 октября 2017 г.</p>
+              <h3 class="h3 main_news-item_title"><a href="#">Конкурс "Лечение как приключение"</a></h3>
+              <p class="main_news-item_text">Если вспоминать, каких докторов мы знаем, нефролога называют не сразу – стучишься к нему не каждый день и даже не каждый год.</p>
+            </div>
+          </div>
+          <div class="col-xs-12 visible-md visible-lg col-md-4 col-lg-3">
+            <div class="main_news-item">
+              <p class="main_news-item_date">30 октября 2017 г.</p>
+              <h3 class="h3 main_news-item_title"><a href="#">Конкурс "Лечение как приключение"</a></h3>
+              <p class="main_news-item_text">Если вспоминать, каких докторов мы знаем, нефролога называют не сразу – стучишься к нему не каждый день и даже не каждый год.</p>
+            </div>
+          </div>
+          <div class="col-xs-12 visible-lg col-lg-3">
+            <div class="main_news-item">
+              <p class="main_news-item_date">30 октября 2017 г.</p>
+              <h3 class="h3 main_news-item_title"><a href="#">Конкурс "Лечение как приключение"</a></h3>
+              <p class="main_news-item_text">Если вспоминать, каких докторов мы знаем, нефролога называют не сразу – стучишься к нему не каждый день и даже не каждый год.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12"><a href="#" class="button main_news-all">Все новости<span><i class="fa fa-angle-right"></i></span></a></div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="logo"><a href="/">
+                <picture><img src="img/logo.png" alt="logo" title="logo" class="img-responsive">
+                </picture></a></div>
+            <p class="copyright">© 2013 Медико-фармацевтический центр Рубин</p>
+          </div>
+          <div class="col-sm-6 hidden-xs col-md-4 col-lg-3">
+            <div class="footer-contacts"><a href="tel:+7985656565" class="footer-contacts_tel">+7 (3439) 399-880</a>
+              <p class="footer-contacts_text">623412, г. Каменск-Уральский,<br>ул. Каменская д. 25</p>
+              <p class="footer-contacts_text">Часы работы центра с пн-пт:<br>c 7.00 - 20.00, с сб-вс: c 8.00 - 20.00</p><a href="mailto:info@mfcrubin.ru" class="footer-contacts_mail">info@mfcrubin.ru</a>
+            </div>
+          </div>
+          <div class="col-md-4 visible-md visible-lg col-lg-3">
+            <div class="footer-menu"><a href="#" class="footer-menu_item">О компании</a><a href="#" class="footer-menu_item">Фотогаллерея</a><a href="#" class="footer-menu_item">Команда</a><a href="#" class="footer-menu_item">Вопросы и ответы</a><a href="#" class="footer-menu_item">Услуги</a><a href="#" class="footer-menu_item">Вакансии</a><a href="#" class="footer-menu_item">Клиенты</a></div>
+          </div>
+          <div class="col-lg-3 visible-lg">
+            <div class="footer-social"><a href="#" id="facebook" class="footer-social_item"><i class="fa fa-facebook"></i></a><a href="#" id="vk" class="footer-social_item"><i class="fa fa-vk"></i></a><a href="#" id="odnoklassniki" class="footer-social_item"><i class="fa fa-odnoklassniki"></i></a></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <form id="backCallForm" action="#" class="modal-form mfp-hide">
+      <p class="modal-form_text">Оставьте ваши контактные данные и администратор клиники позвонит в ближайшее время и запишет вас на прием к специалисту</p>
+      <div class="field modal-form_field">
+        <label for="backCall_name" class="label">Представьтесь</label>
+        <input type="text" id="backCall_name" placeholder="Ваше ФИО" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="backCall_phone" class="label">Ваш телефон</label>
+        <input type="text" id="backCall_phone" placeholder="+7 (___) ___ __ __" class="input is-fullwidth">
+      </div>
+      <div class="modal-form_checkbox">
+        <label class="checkbox">
+          <input type="checkbox" id="modal_agreement">
+          <label for="modal_agreement">Я согласен с <a href="#">политикой обработки персональных данных</a></label>
+        </label>
+      </div>
+      <button type="submit" class="modal-form_submit">Отправить</button>
+    </form>
+    <form id="registerForm" action="#" class="modal-form mfp-hide">
+      <p class="modal-form_title">Регистрация</p>
+      <div class="field modal-form_field">
+        <label for="register_name" class="label">Представьтесь</label>
+        <input type="text" id="register_name" placeholder="Ваше ФИО" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="register_phone" class="label">Ваш телефон</label>
+        <input type="text" id="register_phone" placeholder="+7 (___) ___ __ __" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="mail" class="label">Электронная почта</label>
+        <input type="mail" id="mail" placeholder="e-mail" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="register_password" class="label">Придумайте пароль</label>
+        <input type="password" id="register_password" placeholder="Пароль" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="register_password_confirmation" class="label">Повторите пароль</label>
+        <input type="password" id="register_password_confirmation" placeholder="Повторите пароль" class="input is-fullwidth">
+      </div>
+      <div class="modal-form_checkbox">
+        <label class="checkbox">
+          <input type="checkbox" id="register_agreement">
+          <label for="register_agreement">Я согласен с <a href="#">политикой обработки персональных данных</a></label>
+        </label>
+      </div>
+      <button type="submit" class="modal-form_submit">Отправить</button>
+    </form>
+    <form id="loginForm" action="#" class="modal-form mfp-hide">
+      <p class="modal-form_title">Вход в личный кабинет</p>
+      <div class="field modal-form_field">
+        <label for="login_phone" class="label">Ваш телефон</label>
+        <input type="text" id="login_phone" placeholder="+7 (___) ___ __ __" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="password" class="label">Пароль</label>
+        <input type="password" id="password" placeholder="Пароль" class="input is-fullwidth">
+      </div>
+      <button type="submit" class="modal-form_submit">Вход</button><a href="#" class="modal-form_link">Забыли пароль?</a><a href="#registerForm" class="modal-form_link with-modal">Регистрация</a>
+    </form>
+    <link rel="stylesheet" href="css/main.min.css">
+    <script src="js/scripts.min.js"></script>
+    <script src="js/_index.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Start HTML template</title>
+    <meta name="description" content="Description of the project">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <meta property="og:image" content="path/to/image.jpg">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+    <!-- Chrome, Firefox OS and Opera-->
+    <meta name="theme-color" content="#000">
+    <!-- Windows Phone-->
+    <meta name="msapplication-navbutton-color" content="#000">
+    <!-- iOS Safari-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-top">
+          <div class="menu-burger visible-xs"><a href="#" data-target="main-menu" class="menu-burger_btn"><span></span><span></span><span></span></a></div>
+          <div class="logo"><a href="/">
+              <picture><img src="img/logo.png" alt="logo" title="logo" class="img-responsive">
+              </picture></a></div>
+          <div class="header-menu-contacts hidden-xs"></div><a href="#" class="button enroll"><i class="fa fa-phone visible-xs visible-sm"></i><span class="visible-md visible-lg">Записаться</span></a>
+        </div>
+        <div class="navbar hidden-xs"></div>
+      </div>
+      <div id="main-menu" class="menu"><a href="#loginForm" class="login"><i class="fa fa-user"></i><span class="visible-xs visible-md visible-lg">Личный кабинет </span></a>
+        <div class="menu-list"><a href="#" class="menu-list_link">О компании</a><a href="/team.html" class="menu-list_link">Специалисты</a><a href="#" class="menu-list_link">Направления</a><a href="#" class="menu-list_link">Фотогалерея</a><a href="#" class="menu-list_link">Вопросы и ответы</a><a href="#" class="menu-list_link">Отзывы</a><a href="#" class="menu-list_link">Новости и акции</a><a href="#" class="menu-list_link">Вакансии</a><a href="#" class="menu-list_link">Контакты</a></div>
+        <div class="menu-contacts">
+          <div class="menu-contacts_item"><span class="menu-contacts_icon"><i class="fa fa-map-marker"></i></span>
+            <h3 class="h3">г. Каменск-Уральский<br>ул. Каменская, 25</h3><a href="#" class="menu-contacts_link">Показать на карте	</a>
+          </div>
+          <div class="menu-contacts_item"><span class="menu-contacts_icon"><i class="fa fa-phone"></i></span>
+            <h3 class="h3">+7 (3439) 399-880 </h3><a href="#backCallForm" class="menu-contacts_link">Перезвоните мне</a>
+          </div>
+        </div>
+      </div>
+    </header>
+        <section class="section page-title">
+          <div class="container">
+            <div class="row hidden-xs">
+              <div class="col-xs-12">
+                <ul class="breadcrumbs">
+                  <li><a href="/">Главная</a><span class="icon"><i class="fa fa-angle-right"></i></span></li>
+                  <li class="active">Контакты</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <h1 class="h1">Контакты</h1>
+              </div>
+            </div>
+          </div>
+        </section>
+    <section id="map" style="background-image:url(img/map.jpg)" class="section">
+      <div class="container">
+        <div class="map-info">
+          <div class="map-item"><span class="icon"><i class="fa fa-map-marker"></i></span>
+            <p class="map-item-text">г. Каменск-Уральский, ул. Каменская, 25 </p>
+          </div>
+          <div class="map-item"><span class="icon"><i class="fa fa-phone"></i></span>
+            <p class="map-item-text">+7 (3439) 399-880</p>
+          </div>
+          <div class="map-item no-margin"><span class="icon"><i class="fa fa-clock-o"></i></span>
+            <p class="map-item-text">пн-пт: c 7.00 - 20.00<br>с сб-вс: c 8.00 - 20.00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section contact-blocks">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <div class="contact-block">
+              <div class="contact-block-title">
+                <div class="icon"><img src="img/question.png" alt="alt question"></div>
+                <h3 class="h3 text">Задать вопрос специалисту</h3>
+              </div>
+              <p class="contact-block-text">Выберите специалиста, которому вы хотите задать вопрос</p>
+              <select type="select" class="select">
+                <option>Терапевт</option>
+                <option>Проктолог</option>
+              </select><a href="#" class="button">Задать вопрос</a>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="contact-block">
+              <div class="contact-block-title">
+                <div class="icon"><img src="img/question.png" alt="alt question"></div>
+                <h3 class="h3 text">Записаться на прием к врачу</h3>
+              </div>
+              <p class="contact-block-text">Выберите специалиста, которому вы хотите задать вопрос</p>
+              <select type="select" class="select">
+                <option>Терапевт</option>
+                <option>Проктолог</option>
+              </select><a href="#" class="button">Задать вопрос</a>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="contact-block">
+              <div class="contact-block-title">
+                <div class="icon"><img src="img/question.png" alt="alt question"></div>
+                <h3 class="h3 text">Заказать обратный звонок</h3>
+              </div>
+              <p class="contact-block-text">или позвоните по номеру, наши специалисты ответят на все вопросы:</p><a href="#" class="phone-link">+7 (3439) <span>399 880</span></a><a href="#" class="button">Обратный звонок</a>
+            </div>
+          </div>
+        </div>
+        <div class="admins">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="h2 section-title">Администрация клиники</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="admin">
+                <div class="admin-img"><img src="img/glavvrach.png" alt="alt admin"></div>
+                <div class="admin-title">
+                  <h3 class="h3 admin-name">Давыдкин Павел Николаевич</h3>
+                  <p class="admin-place">Главный врач</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="admin">
+                <div class="admin-img"><img src="img/nurse.png" alt="alt nurse"></div>
+                <div class="admin-title">
+                  <h3 class="h3 admin-name">Фомина Наталья Викторовна</h3>
+                  <p class="admin-place">Старшая медицинская сестра</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contacts-data">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="h2 section-title">Реквизиты</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <p>Адрес места нахождения: 620144, г. Екатеринбург, ул. Шейнкмана, д.113, оф. 521 </p>
+              <p>Почтовый адрес: 620 144, г. Екатеринбург, ул. Шейнкмана, д. 113 </p>
+              <p>Адрес для отправки корреспонденции: 620144, г. Екатеринбург, а/я 44 </p>
+              <p>ИНН 6671276329 КПП 667101001 </p>
+              <p>ОГРН 1086671019335 </p>
+              <p>ОКПО 89892072 </p>
+              <p>Банковские реквизиты: р/с 40702810200000001866 в ООО КБ "КОЛЬЦО УРАЛА" </p>
+              <p>к/с 30101810500000000768 </p>
+              <p>БИК 046577768</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="logo"><a href="/">
+                <picture><img src="img/logo.png" alt="logo" title="logo" class="img-responsive">
+                </picture></a></div>
+            <p class="copyright">© 2013 Медико-фармацевтический центр Рубин</p>
+          </div>
+          <div class="col-sm-6 hidden-xs col-md-4 col-lg-3">
+            <div class="footer-contacts"><a href="tel:+7985656565" class="footer-contacts_tel">+7 (3439) 399-880</a>
+              <p class="footer-contacts_text">623412, г. Каменск-Уральский,<br>ул. Каменская д. 25</p>
+              <p class="footer-contacts_text">Часы работы центра с пн-пт:<br>c 7.00 - 20.00, с сб-вс: c 8.00 - 20.00</p><a href="mailto:info@mfcrubin.ru" class="footer-contacts_mail">info@mfcrubin.ru</a>
+            </div>
+          </div>
+          <div class="col-md-4 visible-md visible-lg col-lg-3">
+            <div class="footer-menu"><a href="#" class="footer-menu_item">О компании</a><a href="#" class="footer-menu_item">Фотогаллерея</a><a href="#" class="footer-menu_item">Команда</a><a href="#" class="footer-menu_item">Вопросы и ответы</a><a href="#" class="footer-menu_item">Услуги</a><a href="#" class="footer-menu_item">Вакансии</a><a href="#" class="footer-menu_item">Клиенты</a></div>
+          </div>
+          <div class="col-lg-3 visible-lg">
+            <div class="footer-social"><a href="#" id="facebook" class="footer-social_item"><i class="fa fa-facebook"></i></a><a href="#" id="vk" class="footer-social_item"><i class="fa fa-vk"></i></a><a href="#" id="odnoklassniki" class="footer-social_item"><i class="fa fa-odnoklassniki"></i></a></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <link rel="stylesheet" href="css/main.min.css">
+    <script src="js/scripts.min.js"></script>
+    <script src="js/_contacts.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Start HTML template</title>
+    <meta name="description" content="Description of the project">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <meta property="og:image" content="path/to/image.jpg">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+    <!-- Chrome, Firefox OS and Opera-->
+    <meta name="theme-color" content="#000">
+    <!-- Windows Phone-->
+    <meta name="msapplication-navbutton-color" content="#000">
+    <!-- iOS Safari-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-top">
+          <div class="menu-burger visible-xs"><a href="#" data-target="main-menu" class="menu-burger_btn"><span></span><span></span><span></span></a></div>
+          <div class="logo"><a href="/">
+              <picture><img src="img/logo.png" alt="logo" title="logo" class="img-responsive">
+              </picture></a></div>
+          <div class="header-menu-contacts hidden-xs"></div><a href="#" class="button enroll"><i class="fa fa-phone visible-xs visible-sm"></i><span class="visible-md visible-lg">Записаться</span></a>
+        </div>
+        <div class="navbar hidden-xs"></div>
+      </div>
+      <div id="main-menu" class="menu"><a href="#loginForm" class="login"><i class="fa fa-user"></i><span class="visible-xs visible-md visible-lg">Личный кабинет </span></a>
+        <div class="menu-list"><a href="#" class="menu-list_link">О компании</a><a href="/team.html" class="menu-list_link">Специалисты</a><a href="#" class="menu-list_link">Направления</a><a href="#" class="menu-list_link">Фотогалерея</a><a href="#" class="menu-list_link">Вопросы и ответы</a><a href="#" class="menu-list_link">Отзывы</a><a href="#" class="menu-list_link">Новости и акции</a><a href="#" class="menu-list_link">Вакансии</a><a href="#" class="menu-list_link">Контакты</a></div>
+        <div class="menu-contacts">
+          <div class="menu-contacts_item"><span class="menu-contacts_icon"><i class="fa fa-map-marker"></i></span>
+            <h3 class="h3">г. Каменск-Уральский<br>ул. Каменская, 25</h3><a href="#" class="menu-contacts_link">Показать на карте	</a>
+          </div>
+          <div class="menu-contacts_item"><span class="menu-contacts_icon"><i class="fa fa-phone"></i></span>
+            <h3 class="h3">+7 (3439) 399-880 </h3><a href="#backCallForm" class="menu-contacts_link">Перезвоните мне</a>
+          </div>
+        </div>
+      </div>
+    </header>
+        <section class="section page-title">
+          <div class="container">
+            <div class="row hidden-xs">
+              <div class="col-xs-12">
+                <ul class="breadcrumbs">
+                  <li><a href="/">Главная</a><span class="icon"><i class="fa fa-angle-right"></i></span></li>
+                  <li class="active">Специалисты</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <h1 class="h1">Специалисты</h1>
+              </div>
+            </div>
+          </div>
+        </section>
+    <section class="section team">
+      <div class="container">
+        <div id="teamSearch">
+          <div class="row">
+            <div class="col-xs-12">
+              <form action="#" class="form search-form">
+                <input type="text" v-model="search" placeholder="Поиск по специалистам">
+                <button type="submit"><i class="fa fa-search"></i><span class="hidden-xs">Найти</span></button>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="colxs-12">
+              <div v-for="doctor in filteredDoctors" class="team-item"><img :src="doctor.img" :alt="doctor.name" class="team-img img-responsive">
+                <div class="team-item-content">
+                  <h2 class="h2 team-name">{{ doctor.name }}</h2>
+                  <div v-for="work in doctor.specialist" class="team-specialist">
+                    <p class="team-specialist_activity"><b>{{ work.activity }}</b></p>
+                    <p class="team-specialist_level">{{ work.level }}</p>
+                  </div>
+                  <div v-if="doctor.qualify[0]" class="team-qualify">
+                    <h4 class="h4">Квалификация</h4>
+                    <p v-for="item in doctor.qualify" class="team-qualify_item">{{ item.title }}</p>
+                  </div><a href="#" class="team-link">Показать полностью</a>
+                  <div class="team-item_border"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-if="!filteredDoctors.length" class="row">
+            <div class="col-xs-12">
+              <p class="nothing">Ничего не найдено</p>
+            </div>
+          </div>
+          <div v-if="filteredDoctors.length" class="row">
+            <div class="col-xs-12">
+              <nav aria-label="Page navigation">
+                <ul class="pagination">
+                  <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true" class="icon"><img src="img/left-arrow.svg" alt="prev"></span></a></li>
+                  <li class="hidden-xs active"><a href="#">1</a></li>
+                  <li class="hidden-xs"><a href="#">2</a></li>
+                  <li class="hidden-xs"><a href="#">3</a></li>
+                  <li class="hidden-xs"><a href="#">4</a></li>
+                  <li class="hidden-xs"><a href="#">5</a></li>
+                  <li><a href="#" aria-label="Next"><span aria-hidden="true" class="icon"><img src="img/right-arrow.svg" alt="next"></span></a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="logo"><a href="/">
+                <picture><img src="img/logo.png" alt="logo" title="logo" class="img-responsive">
+                </picture></a></div>
+            <p class="copyright">© 2013 Медико-фармацевтический центр Рубин</p>
+          </div>
+          <div class="col-sm-6 hidden-xs col-md-4 col-lg-3">
+            <div class="footer-contacts"><a href="tel:+7985656565" class="footer-contacts_tel">+7 (3439) 399-880</a>
+              <p class="footer-contacts_text">623412, г. Каменск-Уральский,<br>ул. Каменская д. 25</p>
+              <p class="footer-contacts_text">Часы работы центра с пн-пт:<br>c 7.00 - 20.00, с сб-вс: c 8.00 - 20.00</p><a href="mailto:info@mfcrubin.ru" class="footer-contacts_mail">info@mfcrubin.ru</a>
+            </div>
+          </div>
+          <div class="col-md-4 visible-md visible-lg col-lg-3">
+            <div class="footer-menu"><a href="#" class="footer-menu_item">О компании</a><a href="#" class="footer-menu_item">Фотогаллерея</a><a href="#" class="footer-menu_item">Команда</a><a href="#" class="footer-menu_item">Вопросы и ответы</a><a href="#" class="footer-menu_item">Услуги</a><a href="#" class="footer-menu_item">Вакансии</a><a href="#" class="footer-menu_item">Клиенты</a></div>
+          </div>
+          <div class="col-lg-3 visible-lg">
+            <div class="footer-social"><a href="#" id="facebook" class="footer-social_item"><i class="fa fa-facebook"></i></a><a href="#" id="vk" class="footer-social_item"><i class="fa fa-vk"></i></a><a href="#" id="odnoklassniki" class="footer-social_item"><i class="fa fa-odnoklassniki"></i></a></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <form id="backCallForm" action="#" class="modal-form mfp-hide">
+      <p class="modal-form_text">Оставьте ваши контактные данные и администратор клиники позвонит в ближайшее время и запишет вас на прием к специалисту</p>
+      <div class="field modal-form_field">
+        <label for="backCall_name" class="label">Представьтесь</label>
+        <input type="text" id="backCall_name" placeholder="Ваше ФИО" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="backCall_phone" class="label">Ваш телефон</label>
+        <input type="text" id="backCall_phone" placeholder="+7 (___) ___ __ __" class="input is-fullwidth">
+      </div>
+      <div class="modal-form_checkbox">
+        <label class="checkbox">
+          <input type="checkbox" id="modal_agreement">
+          <label for="modal_agreement">Я согласен с <a href="#">политикой обработки персональных данных</a></label>
+        </label>
+      </div>
+      <button type="submit" class="modal-form_submit">Отправить</button>
+    </form>
+    <form id="registerForm" action="#" class="modal-form mfp-hide">
+      <p class="modal-form_title">Регистрация</p>
+      <div class="field modal-form_field">
+        <label for="register_name" class="label">Представьтесь</label>
+        <input type="text" id="register_name" placeholder="Ваше ФИО" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="register_phone" class="label">Ваш телефон</label>
+        <input type="text" id="register_phone" placeholder="+7 (___) ___ __ __" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="mail" class="label">Электронная почта</label>
+        <input type="mail" id="mail" placeholder="e-mail" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="register_password" class="label">Придумайте пароль</label>
+        <input type="password" id="register_password" placeholder="Пароль" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="register_password_confirmation" class="label">Повторите пароль</label>
+        <input type="password" id="register_password_confirmation" placeholder="Повторите пароль" class="input is-fullwidth">
+      </div>
+      <div class="modal-form_checkbox">
+        <label class="checkbox">
+          <input type="checkbox" id="register_agreement">
+          <label for="register_agreement">Я согласен с <a href="#">политикой обработки персональных данных</a></label>
+        </label>
+      </div>
+      <button type="submit" class="modal-form_submit">Отправить</button>
+    </form>
+    <form id="loginForm" action="#" class="modal-form mfp-hide">
+      <p class="modal-form_title">Вход в личный кабинет</p>
+      <div class="field modal-form_field">
+        <label for="login_phone" class="label">Ваш телефон</label>
+        <input type="text" id="login_phone" placeholder="+7 (___) ___ __ __" class="input is-fullwidth">
+      </div>
+      <div class="field modal-form_field">
+        <label for="password" class="label">Пароль</label>
+        <input type="password" id="password" placeholder="Пароль" class="input is-fullwidth">
+      </div>
+      <button type="submit" class="modal-form_submit">Вход</button><a href="#" class="modal-form_link">Забыли пароль?</a><a href="#registerForm" class="modal-form_link with-modal">Регистрация</a>
+    </form>
+    <link rel="stylesheet" href="css/main.min.css">
+    <script src="js/scripts.min.js"></script>
+    <script src="js/_team.min.js"></script>
+  </body>
+</html>
